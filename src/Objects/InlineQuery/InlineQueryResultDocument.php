@@ -3,7 +3,7 @@
 namespace Telegram\Bot\Objects\InlineQuery;
 
 /**
- * Class InlineQueryResultDocument
+ * Class InlineQueryResultDocument.
  *
  * <code>
  * $params = [
@@ -36,9 +36,5 @@ namespace Telegram\Bot\Objects\InlineQuery;
  * @method $this setThumbHeight($int)               Optional. Thumbnail height */
 class InlineQueryResultDocument extends InlineBaseObject
 {
-    public function __construct($params = [])
-    {
-        parent::__construct($params);
-        $this->put('type', 'document');
-    }
+    protected $type = 'document';
 }

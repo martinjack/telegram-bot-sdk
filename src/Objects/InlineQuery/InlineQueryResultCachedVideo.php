@@ -3,7 +3,7 @@
 namespace Telegram\Bot\Objects\InlineQuery;
 
 /**
- * Class InlineQueryResultCachedVideo
+ * Class InlineQueryResultCachedVideo.
  *
  * <code>
  * $params = [
@@ -29,9 +29,5 @@ namespace Telegram\Bot\Objects\InlineQuery;
  */
 class InlineQueryResultCachedVideo extends InlineBaseObject
 {
-    public function __construct($params = [])
-    {
-        parent::__construct($params);
-        $this->put('type', 'video');
-    }
+    protected $type = 'video';
 }

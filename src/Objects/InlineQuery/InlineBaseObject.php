@@ -1,11 +1,27 @@
 <?php
+
 namespace Telegram\Bot\Objects\InlineQuery;
 
-use BadMethodCallException;
 use Illuminate\Support\Collection;
 
+/**
+ * Class InlineBaseObject.
+ */
 abstract class InlineBaseObject extends Collection
 {
+    /** @var string Type */
+    protected $type;
+
+    /**
+     * InlineBaseObject constructor.
+     *
+     * @param array $params
+     */
+    public function __construct($params = [])
+    {
+        parent::__construct($params);
+        $this->put('type', $this->type);
+    }
 
     /**
      * Magic method to set properties dynamically.
@@ -17,15 +33,12 @@ abstract class InlineBaseObject extends Collection
      */
     public function __call($name, $arguments)
     {
-        $action = substr($name, 0, 3);
-
-        if ($action === 'set') {
-            $property = snake_case(substr($name, 3));
-            $this->put($property, $arguments[0]);
-
-            return $this;
+        if (! starts_with($name, 'set')) {
+            throw new \BadMethodCallException("Method {$name} does not exist.");
         }
+        $property = snake_case(substr($name, 3));
+        $this->put($property, $arguments[0]);
 
-        throw new BadMethodCallException("Method {$name} does not exist.");
+        return $this;
     }
 }

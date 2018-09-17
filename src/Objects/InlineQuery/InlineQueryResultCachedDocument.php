@@ -3,7 +3,7 @@
 namespace Telegram\Bot\Objects\InlineQuery;
 
 /**
- * Class InlineQueryResultCachedDocument
+ * Class InlineQueryResultCachedDocument.
  *
  * <code>
  * $params = [
@@ -29,9 +29,5 @@ namespace Telegram\Bot\Objects\InlineQuery;
  */
 class InlineQueryResultCachedDocument extends InlineBaseObject
 {
-    public function __construct($params = [])
-    {
-        parent::__construct($params);
-        $this->put('type', 'document');
-    }
+    protected $type = 'document';
 }

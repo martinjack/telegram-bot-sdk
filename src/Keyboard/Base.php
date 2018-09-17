@@ -1,8 +1,12 @@
 <?php
+
 namespace Telegram\Bot\Keyboard;
 
 use Illuminate\Support\Collection;
 
+/**
+ * Class Base.
+ */
 class Base extends Collection
 {
     /**
@@ -15,16 +19,12 @@ class Base extends Collection
      */
     public function __call($method, $args)
     {
-        $action = substr($method, 0, 3);
-
-        if ($action !== 'set') {
+        if (! starts_with($method, 'set')) {
             return parent::__call($method, $args);
         }
-
         $property = snake_case(substr($method, 3));
         $this->items[$property] = $args[0];
 
         return $this;
-
     }
 }

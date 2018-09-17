@@ -3,7 +3,7 @@
 namespace Telegram\Bot\Objects\InlineQuery;
 
 /**
- * Class InlineQueryResultGif
+ * Class InlineQueryResultGif.
  *
  * <code>
  * $params = [
@@ -11,6 +11,7 @@ namespace Telegram\Bot\Objects\InlineQuery;
  *   'gif_url'                  => '',
  *   'gif_width'                => '',
  *   'gif_height'               => '',
+ *   'gif_duration'             => '',
  *   'thumb_url'                => '',
  *   'title'                    => '',
  *   'caption'                  => '',
@@ -25,6 +26,7 @@ namespace Telegram\Bot\Objects\InlineQuery;
  * @method $this setGifUrl($string)                 A valid URL for the GIF file. File size must not exceed 1MB
  * @method $this setGifWidth($int)                  Optional. Width of the GIF
  * @method $this setGifHeight($int)                 Optional. Height of the GIF
+ * @method $this setGifDuration($int)               Optional. Duration of the GIF
  * @method $this setThumbUrl($string)               URL of the static thumbnail for the result (jpeg or gif)
  * @method $this setTitle($string)                  Optional. Title for the result
  * @method $this setCaption($string)                Optional. Caption of the GIF file to be sent, 0-200 characters
@@ -33,9 +35,5 @@ namespace Telegram\Bot\Objects\InlineQuery;
  */
 class InlineQueryResultGif extends InlineBaseObject
 {
-    public function __construct($params = [])
-    {
-        parent::__construct($params);
-        $this->put('type', 'gif');
-    }
+    protected $type = 'gif';
 }
