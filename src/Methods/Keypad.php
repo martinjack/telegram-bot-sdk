@@ -21,7 +21,6 @@ trait Keypad
      *
      * @deprecated Use Telegram\Bot\Keyboard\Keyboard::make(array $params = []) instead.
      *             To be removed in next major version.
-     *
      * @link       https://core.telegram.org/bots/api#replykeyboardmarkup
      *
      * @param array $params
