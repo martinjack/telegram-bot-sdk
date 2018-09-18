@@ -54,7 +54,7 @@ class InputFile
      */
     public function __construct($file = null, $filename = null)
     {
-        $this->file = $file;
+        $this->file     = $file;
         $this->filename = $filename;
     }
 
@@ -91,7 +91,7 @@ class InputFile
      */
     public function getFilename(): string
     {
-        if ($this->isFileResourceOrStream() && ! isset($this->filename)) {
+        if ($this->isFileResourceOrStream() && !isset($this->filename)) {
             return $this->filename = $this->attemptFileNameDetection();
         }
 
@@ -236,7 +236,7 @@ class InputFile
      */
     protected function isFileLocalAndExists(): bool
     {
-        if (! is_string($this->file)) {
+        if (!is_string($this->file)) {
             return false;
         }
 
