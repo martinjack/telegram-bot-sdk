@@ -66,7 +66,7 @@ class Keyboard extends Base
      */
     public function row(...$buttons): Keyboard
     {
-        $property = $this->isInlineKeyboard() ? 'inline_keyboard' : 'keyboard';
+        $property                 = $this->isInlineKeyboard() ? 'inline_keyboard' : 'keyboard';
         $this->items[$property][] = $buttons;
 
         return $this;
@@ -176,7 +176,29 @@ class Keyboard extends Base
     {
         return new static(array_merge(['remove_keyboard' => true, 'selective' => false], $params));
     }
-
+    /**
+     * Hide the current custom keyboard and display the default letter-keyboard.
+     *
+     * <code>
+     * $params = [
+     *   'hide_keyboard' => true,
+     *   'selective'     => false,
+     * ];
+     * </code>
+     *
+     * @link https://core.telegram.org/bots/api#replykeyboardhide
+     *
+     * @param array $params
+     *
+     * @var bool    $params ['hide_keyboard']
+     * @var bool    $params ['selective']
+     *
+     * @return string
+     */
+    public static function hide(array $params = [])
+    {
+        return new static(array_merge(['hide_keyboard' => true, 'selective' => false], $params));
+    }
     /**
      * Display a reply interface to the user (act as if the user has selected the bot‘s message and tapped ’Reply').
      *
