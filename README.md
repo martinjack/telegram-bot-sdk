@@ -22,6 +22,12 @@ Telegram Bot API - PHP SDK
 >
 > To get started writing your bots using this SDK, Please refer the [documentation][link-docs].
 
+## Install
+
+```sh
+composer require jackmartin/telegram-bot-sdk
+```
+
 ## Documentation
 
 Documentation for the SDK can be found on the [website][link-docs].
