@@ -2,8 +2,8 @@
 
 namespace Telegram\Bot;
 
-use InvalidArgumentException;
 use Illuminate\Contracts\Container\Container;
+use InvalidArgumentException;
 use Telegram\Bot\Exceptions\TelegramSDKException;
 
 /**
@@ -59,7 +59,7 @@ class BotsManager
 
         $bots = collect($this->getConfig('bots'));
 
-        if (! $config = $bots->get($name, null)) {
+        if (!$config = $bots->get($name, null)) {
             throw new InvalidArgumentException("Bot [$name] not configured.");
         }
 
@@ -79,7 +79,7 @@ class BotsManager
     {
         $name = $name ?? $this->getDefaultBotName();
 
-        if (! isset($this->bots[$name])) {
+        if (!isset($this->bots[$name])) {
             $this->bots[$name] = $this->makeBot($name);
         }
 
@@ -126,7 +126,7 @@ class BotsManager
      */
     public function getConfig($key, $default = null)
     {
-        return array_get($this->config, $key, $default);
+        return data_get($this->config, $key, $default);
     }
 
     /**
@@ -188,7 +188,7 @@ class BotsManager
     {
         $config = $this->getBotConfig($name);
 
-        $token = array_get($config, 'token');
+        $token = data_get($config, 'token');
 
         $telegram = new Api(
             $token,
@@ -201,7 +201,7 @@ class BotsManager
             $telegram->setContainer($this->container);
         }
 
-        $commands = array_get($config, 'commands', []);
+        $commands = data_get($config, 'commands', []);
         $commands = $this->parseBotCommands($commands);
 
         // Register Commands
@@ -234,11 +234,11 @@ class BotsManager
      */
     protected function parseCommands(array $commands): array
     {
-        if (! is_array($commands)) {
+        if (!is_array($commands)) {
             return $commands;
         }
 
-        $commandGroups = $this->getConfig('command_groups');
+        $commandGroups  = $this->getConfig('command_groups');
         $sharedCommands = $this->getConfig('shared_commands');
 
         //TODO: This is ripe for refactor / collections.
@@ -260,7 +260,7 @@ class BotsManager
                 $command = $sharedCommands[$command];
             }
 
-            if (! in_array($command, $results)) {
+            if (!in_array($command, $results)) {
                 $results[] = $command;
             }
         }

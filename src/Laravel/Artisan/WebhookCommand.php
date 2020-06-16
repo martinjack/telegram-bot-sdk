@@ -75,8 +75,8 @@ class WebhookCommand extends Command
      */
     protected function setupWebhook()
     {
-        $params = ['url' => array_get($this->config, 'webhook_url')];
-        $certificatePath = array_get($this->config, 'certificate_path', false);
+        $params = ['url' => data_get($this->config, 'webhook_url')];
+        $certificatePath = data_get($this->config, 'certificate_path', false);
 
         if ($certificatePath) {
             $params['certificate'] = $certificatePath;
